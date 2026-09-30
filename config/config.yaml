@@ -1,0 +1,73 @@
+project:
+  name: Employee Activity Intelligence
+
+paths:
+  video: data/videos/s_001.mp4
+  labels: data/labels
+
+  detection_output: outputs/detection
+  tracking_output: outputs/tracking
+  sequence_output: outputs/sequences
+  action_output: outputs/action
+  object_output: outputs/objects
+  pose_output: outputs/pose
+  fusion_output: outputs/fusion
+  decision_output: outputs/decision
+  productivity_output: outputs/productivity
+  visualization_output: outputs/visualization
+
+models:
+  yolo: models/yolo11n.pt
+  slowfast: models/best_model.pth
+
+detection:
+  confidence: 0.35
+  image_size: 1280
+
+tracking:
+  tracker: botsort.yaml
+  max_missing: 15
+  max_stable_distance: 180
+  min_box_area: 3000
+
+sequence:
+  num_frames: 10
+  image_size: 224
+
+slowfast:
+  num_classes: 18
+  num_frames: 10
+  slow_frames: 3
+
+object_detection:
+  confidence: 0.20
+  iou_threshold: 0.50
+
+pose:
+  enabled: true
+
+activity:
+  working_label: WORKING
+  not_working_label: NOT_WORKING
+  neutral_label: NEUTRAL
+
+smoothing:
+  enabled: true
+
+stable_identity:
+  appearance_weight: 0.55
+  spatial_weight: 0.15
+  motion_weight: 0.12
+  iou_weight: 0.08
+  temporal_weight: 0.06
+  raw_id_weight: 0.04
+
+  match_threshold: 0.42
+  strong_match_threshold: 0.60
+
+  max_missing_frames: 900
+  max_gallery_features: 50
+  max_history: 30
+
+  spatial_distance_threshold: 500
+  new_identity_confirmation_frames: 3

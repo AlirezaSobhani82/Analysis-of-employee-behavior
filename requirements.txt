@@ -1,0 +1,12 @@
+numpy==2.2.6
+pandas==2.3.3
+opencv-python==4.11.0.86
+ultralytics==8.3.189
+torch==2.13.0+cpu
+torchvision==0.28.0+cpu
+torchaudio==2.11.0+cpu
+pytorchvideo==0.1.5
+mediapipe==0.10.32
+scipy==1.15.3
+PyYAML==6.0.3
+tqdm==4.67.3
